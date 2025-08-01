@@ -158,3 +158,34 @@ run;
 
 ```
 
+**ERROR CODE PATTERNS**
+```
+/* SAS Standard Error Codes */
+ERROR 22-XXX    - Invalid option or statement
+ERROR 76-XXX    - Syntax errors
+ERROR 180-XXX   - Variable/dataset issues
+ERROR 200-XXX   - I/O related errors
+ERROR 388-XXX   - Macro processing errors
+ERROR 1012-XXX  - System resource errors
+```
+
+**ERROR SEVERITY LEVELS**
+```
+/* Severity Classification */
+CRITICAL    - System failure, immediate attention required
+HIGH        - Major functionality affected, urgent fix needed
+MEDIUM      - Moderate impact, should be addressed soon
+LOW         - Minor issue, can be addressed in regular maintenance
+INFORMATION - Informational messages, no action required
+```
+
+**CUSTOM ERROR CATEGORIES**
+```
+/* Organization-Specific Categories */
+BUSINESS_RULE   - Business logic violations
+DATA_QUALITY    - Data validation failures
+PERFORMANCE     - Performance threshold exceeded
+COMPLIANCE      - Regulatory compliance issues
+INTEGRATION     - System integration failures
+```
+
