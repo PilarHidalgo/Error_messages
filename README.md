@@ -41,25 +41,28 @@ This repository to SAS Error Documentation Template, A standardized template for
 ## 4. DIAGNOSIS AND RESOLUTION
 
 ### 4.1 Diagnostic Steps
-```
-/* Step 1: Review SAS Log */
-proc printto log='c:\temp\saslog.txt';
-run;
-
-/* Step 2: Check Dataset Contents */
-proc contents data=work.test;
-run;
-```
+ **Initial Verification**
+- Review SAS log
+- Identify exact error line
+- Verify code syntax
+**Detailed Analysis**
+- Examine input data
+- Verify permissions and access
+- Review system configuration
 
 ## 5. PRACTICAL EXAMPLES
-sas
-/* 5.1 Code that Generates Error */
+
+**Code that Generates Error**
+```
+/*Code that Generates Error */
 data test;
     set input;
     new_var = non_existent_var + 1;
 run;
-
-/* 5.2 Corrected Code */
+```
+**Corrected Code**
+```
+/*Corrected Code */
 data test;
     set input;
     if exists(non_existent_var) then
@@ -67,19 +70,25 @@ data test;
     else
         new_var = 0;
 run;
+```
 
 ## 6. ADDITIONAL TECHNICAL INFORMATION
-sas
+```
 /* Component Dependencies */
 libname required "path";
 %include required_macros;
+```
 
 /* System Requirements */
+```
 * SAS Version: 9.4 or higher;
 * Required Memory: 4GB minimum;
 * Disk Space: 500MB minimum;
+```
+
 ## 7. VALIDATION AND TESTING
-sas
+
+```
 /* Test Case 1 */
 %macro validate_solution;
     %local test_passed;
@@ -98,10 +107,12 @@ sas
     %if &test_passed > 0 %then %put TEST PASSED;
     %else %put TEST FAILED;
 %mend;
+```
 
+```
 /* Execute Test */
 %validate_solution;
-
+```
 ## 8. CHANGE HISTORY
 
 | Version | Date | Author | Changes |
@@ -110,15 +121,16 @@ sas
 | 1.1 | 2024-01-20 | SYSTEM | Updates |
 
 ## 9. CONTACT AND SUPPORT
-
+```
 /* Support Information */
 %let support_email = 'sas.support@company.com';
 %let emergency_contact = '1-800-XXX-XXXX';
 %let documentation_url = 'http://internal.docs/sas-errors';
-
+```
 ## 10. EXAMPLE IMPLEMENTATION
 
 ### Complete Error Handling Example 
+```
 %macro handle_error;
     %if &syserr ne 0 %then %do;
         %put ERROR: Process failed with code &syserr;
@@ -143,8 +155,6 @@ data _null_;
         %handle_error;
     end;
 run;
-## 11. REFERENCES
-* Documentation Links *
-* SAS Documentation: support.sas.com/documentation
-* Internal Wiki: wiki.company.com/sas-errors
-* Error Database: errors.company.com/search?id=SAS-ERR-001
+
+```
+
