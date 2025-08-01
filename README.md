@@ -5,7 +5,7 @@ This repository to SAS Error Documentation Template, A standardized template for
 
 ## 1. GENERAL ERROR INFORMATION
 
-```sas
+
 | Field | Description | Example |
 |-------|-------------|---------|
 | Error ID | Unique error identifier | SAS-ERR-001 |
@@ -14,22 +14,23 @@ This repository to SAS Error Documentation Template, A standardized template for
 | Severity | Criticality level | CRITICAL, HIGH, MEDIUM, LOW |
 | SAS Version | Affected system version | SAS 9.4, SAS Viya 3.5 |
 | Documentation Date | Creation/update date | 2024-01-15 |
-```
+
 ## 2. ERROR DESCRIPTION
-``` Original Message ```
-ERROR: Variable X not found in dataset WORK.TEST.
+### Original Message 
+```ERROR: Variable X not found in dataset WORK.TEST.```
 
-``` Technical Description ```
-The referenced variable does not exist in the specified dataset.
+### Technical Description 
+```The referenced variable does not exist in the specified dataset.```
 
-``` Context of Occurrence ```
+### Context of Occurrence ###
+```
 - Affected Procedures: PROC SQL, DATA STEP, PROC IMPORT
 - System Modules: Base SAS, SAS/STAT, SAS/GRAPH
 - Prerequisites: Dataset must exist and be accessible
-
+```
 
 ## 3. IMPACT AND CONSEQUENCES
-sas
+
 | Aspect | Description |
 |---------|-------------|
 | System Impact | Process halt, data corruption |
@@ -38,8 +39,9 @@ sas
 | Interrupted Processes | Active procedures |
 
 ## 4. DIAGNOSIS AND RESOLUTION
-sas
-/* 4.1 Diagnostic Steps */
+
+### 4.1 Diagnostic Steps
+```
 /* Step 1: Review SAS Log */
 proc printto log='c:\temp\saslog.txt';
 run;
@@ -47,38 +49,7 @@ run;
 /* Step 2: Check Dataset Contents */
 proc contents data=work.test;
 run;
-
-/* 4.2 Primary Solution */
-data example;
-    set input_dataset;
-    if missing(var1) then var1 = 0;
-run;
-
-/* 4.3 Alternative Solutions */
-/* Option 1 */
-proc sql;
-    select * 
-    from dictionary.columns
-    where libname='WORK' and memname='TEST';
-quit;
-
-/* Option 2 */
-%macro check_var(dsn=, var=);
-    %local rc;
-    %let rc = 0;
-    
-    proc sql noprint;
-        select count(*) into :rc
-        from dictionary.columns
-        where libname='WORK' and 
-              memname=upcase("&dsn") and 
-              name=upcase("&var");
-    quit;
-    
-    %if &rc = 0 %then %do;
-        %put ERROR: Variable &var not found in &dsn;
-    %end;
-%mend;
+```
 
 ## 5. PRACTICAL EXAMPLES
 sas
@@ -130,23 +101,24 @@ sas
 
 /* Execute Test */
 %validate_solution;
+
 ## 8. CHANGE HISTORY
-sas
+
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2024-01-15 | SYSTEM | Initial |
 | 1.1 | 2024-01-20 | SYSTEM | Updates |
 
 ## 9. CONTACT AND SUPPORT
-sas
+
 /* Support Information */
 %let support_email = 'sas.support@company.com';
 %let emergency_contact = '1-800-XXX-XXXX';
 %let documentation_url = 'http://internal.docs/sas-errors';
 
 ## 10. EXAMPLE IMPLEMENTATION
-sas
-/* Complete Error Handling Example */
+
+### Complete Error Handling Example 
 %macro handle_error;
     %if &syserr ne 0 %then %do;
         %put ERROR: Process failed with code &syserr;
