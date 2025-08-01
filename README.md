@@ -16,14 +16,13 @@ This repository to SAS Error Documentation Template, A standardized template for
 | Documentation Date | Creation/update date | 2024-01-15 |
 ```
 ## 2. ERROR DESCRIPTION
-sas
-/* 2.1 Original Message */
+``` Original Message ```
 ERROR: Variable X not found in dataset WORK.TEST.
 
-/* 2.2 Technical Description */
+``` Technical Description ```
 The referenced variable does not exist in the specified dataset.
 
-/* 2.3 Context of Occurrence */
+``` Context of Occurrence ```
 - Affected Procedures: PROC SQL, DATA STEP, PROC IMPORT
 - System Modules: Base SAS, SAS/STAT, SAS/GRAPH
 - Prerequisites: Dataset must exist and be accessible
@@ -173,8 +172,7 @@ data _null_;
     end;
 run;
 ## 11. REFERENCES
-sas
-/* Documentation Links */
+* Documentation Links *
 * SAS Documentation: support.sas.com/documentation
 * Internal Wiki: wiki.company.com/sas-errors
 * Error Database: errors.company.com/search?id=SAS-ERR-001
